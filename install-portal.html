@@ -1,3 +1,19 @@
+<html>
+<head>
+
+<style>
+<link rel="stylesheet" href="https://github.com/pullbox/install-portal/blob/master/install-portal.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+</style>
+
+
+
+</head>
+
+<body>
+
 <div>
   
   <div id="deployment">
@@ -29,7 +45,7 @@
       <li><b>Secret Key</b>
       <p>You will require your Installation Key / Secret Key. For more details please see <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
       </li>
-			 
+       
     </ol>
   </div>
   
@@ -47,7 +63,7 @@
   <div style="overflow: auto;">
   <div style="width: 50%; float:left;"> 
   <div class="block">
-  	<div class="block-text">Please choose your collector type from the options available below.</div> 
+    <div class="block-text">Please choose your collector type from the options available below.</div> 
      <div class="block-button">  
      <Select id="idCollector" class="dropbtn" onchange="fcollector()">
     <option value="remote">Remote Collector</option>
@@ -59,7 +75,7 @@
     
   <div style="width: 50%; float:right;">
   <b>Need help deciding what Collector</b>
-	<p>The simplest way to install is via a “local” Collector. Both Agent and Collector is running on the same machine.
+  <p>The simplest way to install is via a “local” Collector. Both Agent and Collector is running on the same machine.
 “Remote” Collector is our recommended approach for production environments but require a separate server to run on.</p>
   <a href="documentation">See our documentation</a>
 </div>
@@ -70,30 +86,24 @@
 
 
 
-<div id="proxy">
+<div id="idProxy">
   <hr>
- <div class="numberCircle">4</div>
-  <div class="h2-header">Using a Corporate Proxy?</div>
- 
-  <div class="block">
-  <Select id="idPlatform" class="dropbtn" onchange="fplatform()">
-    <option value="linux">Linux 64bit</option>
-    <option value="windows">Windows 64bit</option>
-    <option value="macos">MacOS X 64bit</option>
-  </select>
+   <button class="collapsible"> 
+    <div class="numberCircle">4</div>
+    <div class="h2-header">Using a Corporate Proxy?</div>
+ </button>
+                        
+  <div class="block content">
+    Proxy: <input type="text" name="proxyinput" size="100" placeholder="http://user:pass@192.168.1.101:8080/">
   </div>
-  
-  
 </div>
   
-
-        
     
     
     
     
 
-<div id="platform">
+<div id="idPlatform">
   <hr>
  <div class="numberCircle">5</div>
   <div class="h2-header">Select Platform</div>
@@ -132,66 +142,20 @@
 
 
 
-<style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  /* Dropdown Button */
-.dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 8px;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-  
-  
-.numberCircle {
-    width: 30px;
-    line-height: 30px;
-    border-radius: 50%;
-    text-align: center;
-    background: #ad86ed;
-    border: 2px solid #666;
-  	margin-right: 5px;
-    display: inline-block;
-}  
-  
-.h2-header {
-  	color: #999;
-    display: inline-block;
-  	font-size: 21px;
-}
-
-.block {
-    margin-left: 46px;
-    margin-top: 10px;
-    margin-bottom: 120px;
-}
-  
-.block-button {
-    margin-top: 10px;
-}  
-  
-.block-text {
-    font-size: 13px;
-  	margin-top: 5px;
-}
-  
-</style>
 
 <script> 
+
+function start() {
+  $('#sticky0-sticky-wrapper').hide();
+  fdeployment();
+  fplatform();
+  fcollector();
+  
+}
+  
+                                                 
+                                                    
+  
 function fdeployment() {
 var vdeptype = document.getElementById("idDeploymentType");
 var selected = vdeptype.options[vdeptype.selectedIndex].value;
@@ -205,7 +169,7 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
 }
 
   function fplatform() {
-var vplatform = document.getElementById("platform");
+var vplatform = document.getElementById("idPlatform");
 var selected = vplatform.options[vplatform.selectedIndex].value;
 
     if(selected === 'windows'){
@@ -220,5 +184,32 @@ var selected = vplatform.options[vplatform.selectedIndex].value;
   
 function fcollector() {
 }
+
+
   
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}  
+  
+  
+  
+window.onload = start;  
 </script>
+
+
+
+
+
+</body>
+</html>
