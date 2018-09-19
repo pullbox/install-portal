@@ -1,0 +1,58 @@
+<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  /* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 8px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+  
+.numberCircle {
+    width: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    background: #ad86ed;
+    border: 2px solid #666;
+  	margin-right: 5px;
+    display: inline-block;
+}  
+  
+.h2-header {
+  	color: #999;
+    display: inline-block;
+  	font-size: 21px;
+}
+
+.block {
+    margin-left: 46px;
+    margin-top: 10px;
+    margin-bottom: 120px;
+}
+  
+.block-button {
+    margin-top: 10px;
+}  
+  
+.block-text {
+    font-size: 13px;
+  	margin-top: 5px;
+}
+  
+</style>
