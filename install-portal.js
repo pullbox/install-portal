@@ -1,19 +1,14 @@
-// import instantsearch from './instantsearch.js';
-
-var vdeptype = null;
-
- 
-window.onload = start;   
+var vdeptype = document.getElementById("idDeploymentType");
+   
   
 function start() {
-	vdeptype = document.getElementById("idDeploymentType");
- // $('#sticky0-sticky-wrapper').hide();
+  $('#sticky0-sticky-wrapper').hide();
 
-	fdeployment();
-  	fplatform();
-  	fcollector();
-  	flinuxm();
-  	flauncher();
+  fdeployment();
+  fplatform();
+  fcollector();
+  flinuxm();
+  flauncher();
   
 }
   
@@ -30,7 +25,7 @@ var selected = vlocals3.options[vlocals3.selectedIndex].value;
   if(selected === 's3'){
         $('#s3').show();
     }
-		if(selected === 'local'){
+    if(selected === 'local'){
         $('#local').show();
     }
 }
@@ -50,11 +45,11 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
   if(selected === 'saas'){
         $('#saas').show();
     }
-		if(selected === 'hybrid'){
+    if(selected === 'hybrid'){
         $('#hybrid').show();
     }
   
-  		if(selected === 'onprem'){
+      if(selected === 'onprem'){
         $('#onprem').show();
     }
 }
@@ -62,8 +57,8 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
   
   
   function flinuxm() {
-		var vlinuxm = document.getElementById("idLinuxM");
-		var selected = vlinuxm.options[vlinuxm.selectedIndex].value;
+    var vlinuxm = document.getElementById("idLinuxM");
+    var selected = vlinuxm.options[vlinuxm.selectedIndex].value;
 
     
       $('#lcurl').hide();
@@ -94,8 +89,8 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
   
   
   function fplatform() {
-		var vplatform = document.getElementById("idPlatform");
-		var selected = vplatform.options[vplatform.selectedIndex].value;
+    var vplatform = document.getElementById("idPlatform");
+    var selected = vplatform.options[vplatform.selectedIndex].value;
 
     
       $('#windows').hide();
@@ -115,7 +110,7 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
   
  
   function flauncher() {
-		/* When the user clicks on the button, 
+    /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -152,3 +147,5 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }  
+  
+  
