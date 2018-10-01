@@ -1,10 +1,13 @@
 <html>
 <head>
 
+<script src="install-portal.js" type="text/javascript"></script>
+
+
 <style>
 <link rel="stylesheet" href="https://github.com/pullbox/install-portal/blob/master/install-portal.css"
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link src="install-portal.css" type="text/css"></style>
   
 </style>
 
@@ -15,201 +18,293 @@
 <body>
 
 <div>
-  
+
   <div id="deployment">
-  <div class="numberCircle">1</div>
-  <div class="h2-header">Choose your Deployment type</div>
-  <div class="block">
-  <div class="block-text">Please choose your deployment type from the options available below.</div>
-  <div class="block-text">Please see our <a href="link">Documentation</a> for more details.</div>
-  <div class="block-button">  
-  <Select id="idDeploymentType" class="dropbtn" onchange="fdeployment()">
-    <option value="saas">SaaS</option>
-    <option value="hybrid">Hybrid</option>
-      <option value="onpremises">On-Premises</option>
-  </select>
+    <div class="numberCircle">1</div>
+    <div class="h2-header">Choose your Deployment type</div>
+    <div class="block">
+      <div class="block-text">Please choose your deployment type from the options available below.</div>
+      <div class="block-text">Please see our <a href="link">Documentation</a> for more details.</div>
+      <div class="block-button">
+        <select id="idDeploymentType" class="dropbtn" onchange="fdeployment()">
+            <option value="saas">SaaS</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="onprem">On-Premises</option>
+        </select>
+      </div>
     </div>
+
+
+
+
+    <div id="prerequisites">
+      <hr>
+      <div class="numberCircle">2</div>
+      <div class="h2-header">Prerequisites</div>
+      <div class="block">
+        <ol class="block-text">
+          <li><b>Software and Hardware requirements</b>
+            <p>Please review your HW and SW requirements <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
+            <li><b>Secret Key</b>
+              <p>You will require your Installation Key. For more details please see <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
+            </li>
+
+        </ol>
+      </div>
+
     </div>
-  
-    
-    
-    
-<div id="prerequisites">
-  <hr>
-  <div class="numberCircle">2</div>
-  <div class="h2-header">Prerequisites</div>
-  <div class="block">
-  <ol class="block-text">
-      <li><b>Software and Hardware requirements</b>
-        <p>Please review your HW and SW requirements <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p> 
-      <li><b>Secret Key</b>
-      <p>You will require your Installation Key / Secret Key. For more details please see <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
-      </li>
-       
-    </ol>
-  </div>
-  
-</div>
-  
-    
-    
-    
-    
-<div id="collector">
-  <hr>
-  <div class="numberCircle">3</div>
-  <div class="h2-header">Select Collector implementation</div>
+
+
+
+<div id="saas">
+
+    <div id="collector">
+      <hr>
+      <div class="numberCircle">3</div>
+      <div class="h2-header">Select Collector implementation</div>
+
+      <div style="overflow: auto;">
+        <div style="width: 50%; float:left;">
+          <div class="block">
+            <div class="block-text">Please choose your collector type from the options available below.</div>
+            <div class="block-button">
+              <select id="idCollector" class="dropbtn" onchange="fcollector()">
+                  <option value="remote">Remote Collector</option>
+                  <option value="local">Local Collector</option>
+              </select>
+            </div> <!--//block-button -->
+          </div> <!--// block -->
+        </div> <!--// left -->
+
+        <div style="width: 50%; float:right;">
+          <b>Need help deciding what Collector</b>
+          <p>The simplest way to install is via a “local” Collector. Both Agent and Collector is running on the same machine. “Remote” Collector is our recommended approach for production environments but require a separate server to run on.</p>
+          <a href="documentation">See our documentation</a>
+        </div> <!--// right --> 
+      </div> <!--// overflow --> 
+    </div> <!--// collector --> 
+
+
+
+
+    <div id="idProxy">
+      <hr>
+      <button class="collapsible"> 
+          <div class="numberCircle">4</div>
+          <div class="h2-header">Using a Corporate Proxy?</div>
+      </button>
+
+      <div class="block content">
+        Proxy: <input type="text" name="proxyinput" size="100" placeholder="http://user:pass@192.168.1.101:8080/">
+      </div> <!--// block content -->
+    </div> <!--// proxy -->
+
+
+
+
+
+
+    <div id="platform">
+      <hr>
+      <div class="numberCircle">5</div>
+      <div class="h2-header">Select Platform</div>
+
+      <div class="block">
+        <select id="idPlatform" class="dropbtn" onchange="fplatform()">
+            <option value="linux">Linux 64bit</option>
+            <option value="windows">Windows 64bit</option>
+            <option value="macos">MacOS X 64bit</option>
+        </select>
+      </div> <!--// block -->
+    </div> <!--// platform -->
+
+
+
+    <div id="linux">
+      <hr>
+      <div class="numberCircle">6</div>
+      <div class="h2-header">Linux Installation</div>
+      <div class="block-codex">
+        <div class="block-text">Run these commands on your server's prompt.</div>
+        <div class="block-button">
+          <select id="idLinuxM" class="dropbtn" onchange="flinuxm()">
+              <option value="wget">Wget</option>
+              <option value="curl">cURL</option>
+              <option value="deb">DEB</option>
+              <option value="rpm">PRM</option>
+          </select>
+        </div> <!--// block-button -->
+      </div> <!--/ block-codex -->
+
+
+
+
+      <div id="lwget">
+        <div class="block block-source">
+          <code>wget -O - -o /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=S35734#NRhyxOrTxWcptppB#Jbno9kAvS0iWKSOR4ZRb4NOD7zhMfBDKEZD0DecTJQc=#8be5
+      </code>
+        </div> <!--// block-source -->
+      </div> <!--// lwget -->
+
  
-  <div style="overflow: auto;">
-  <div style="width: 50%; float:left;"> 
-  <div class="block">
-    <div class="block-text">Please choose your collector type from the options available below.</div> 
-     <div class="block-button">  
-     <Select id="idCollector" class="dropbtn" onchange="fcollector()">
-    <option value="remote">Remote Collector</option>
-    <option value="local">Local Collector</option>
-  </select>
-    </div>
-    </div>   
-  </div>
-    
-  <div style="width: 50%; float:right;">
-  <b>Need help deciding what Collector</b>
-  <p>The simplest way to install is via a “local” Collector. Both Agent and Collector is running on the same machine.
-“Remote” Collector is our recommended approach for production environments but require a separate server to run on.</p>
-  <a href="documentation">See our documentation</a>
-</div>
-</div>  
- 
-</div>
+    <div id="lcurl">
+      <div class="block block-source">
+        <code>curl -x http://user:pass@192.168.1.101:8080/ -s /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=S35734#NRhyxOrTxWcptppB#Jbno9kAvS0iWKSOR4ZRb4NOD7zhMfBDKEZD0DecTJQc=#8be5 --https_proxy=http://user:pass@192.168.1.101:8080/
+      </code>
+      </div> <!--// block-source -->
+    </div> <!--// lcurl -->
+  </div> <!--// linux -->
 
 
 
 
-<div id="idProxy">
-  <hr>
-   <button class="collapsible"> 
-    <div class="numberCircle">4</div>
-    <div class="h2-header">Using a Corporate Proxy?</div>
- </button>
-                        
-  <div class="block content">
-    Proxy: <input type="text" name="proxyinput" size="100" placeholder="http://user:pass@192.168.1.101:8080/">
-  </div>
-</div>
-  
-    
-    
-    
-    
 
-<div id="idPlatform">
-  <hr>
- <div class="numberCircle">5</div>
-  <div class="h2-header">Select Platform</div>
- 
-  <div class="block">
-  <Select id="idPlatform" class="dropbtn" onchange="fplatform()">
-    <option value="linux">Linux 64bit</option>
-    <option value="windows">Windows 64bit</option>
-    <option value="macos">MacOS X 64bit</option>
-  </select>
-  </div>
-  
-  
-</div>
-  
 
-    
-    
-    
-    
   <div id="windows">
-  <hr>
-  <div class="numberCircle">6</div>
-  <div class="h2-header">Download the Windows Installer</div> 
-  <div class="block">
-    <div class="block-text">Download the Installer file to your server.</div>
- <div class="block-button">  
- <a href="https://app.overops.com/app/download?t=exe">   
-   <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
-    </div>
-    </div>                                                    
-</div>
-                                                    
-</div> 
+    <hr>
+    <div class="numberCircle">6</div>
+    <div class="h2-header">Download the Windows Installer</div>
+    <div class="block">
+      <div class="block-text">Download the Installer file to your server.</div>
+      <div class="block-button">
+        <a href="https://app.overops.com/app/download?t=exe">   
+        <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
+      </div> <!--// block-button -->
+    </div> <!--// block -->
+  </div> <!--// windows -->
+
+
+
+
+  <div id="macos">
+    <hr>
+    <div class="numberCircle">6</div>
+    <div class="h2-header">Download the Mac OS x Installer</div>
+    <div class="block">
+      <div class="block-text">Download the Installer file to your server.</div>
+      <div class="block-button">
+        <a href="https://app.overops.com/app/download?t=dmg">   
+        <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
+      </div> <!--// block-button -->
+    </div> <!--// block -->
+  </div> <!--// macos -->
 
 
 
 
 
-<script> 
 
-function start() {
-  $('#sticky0-sticky-wrapper').hide();
-  fdeployment();
-  fplatform();
-  fcollector();
+
+
+
+    <div id="attachagent">
+      <hr>
+      <div class="numberCircle">7</div>
+      <div class="h2-header">Attach Micro-Agent to your JVM</div>
+
+      <div class="block">
+        <div class="dropdown">
+        <button onclick="flauncher()" class="dropbtna">Select your launcher</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="https://doc.overops.com/docs/tomcat">Tomcat</a>
+    <a href="https://doc.overops.com/docs/glassfish">Glassfish</a>
+    <a href="https://doc.overops.com/docs/jbosswildfly">JBoss/Wildfly</a>
+    <a href="https://doc.overops.com/docs/play-framework">Play Framework</a>
+    <a href="https://doc.overops.com/docs/eclipse">Eclipse</a>
+    <a href="https://doc.overops.com/docs/netbeans">NetBeans</a>
+    <a href="https://doc.overops.com/docs/intellij">IntelliJ</a>
+    <a href="https://doc.overops.com/docs/scala">Scala</a>
+    <a href="https://doc.overops.com/docs/standalone-jvm">Standalone</a>
+    <a href="https://doc.overops.com/docs/mule">Mule</a>
+    <a href="https://doc.overops.com/docs/websphere">WebSphere</a>
+    <a href="https://doc.overops.com/docs/weblogic">WebLogic</a>  
+    <a href="https://doc.overops.com/docs/cloudfoundry">CloudFoundry</a>
+    <a href="https://doc.overops.com/docs/jetty">Jetty</a>
+  </div> <!--// mydropdown -->
+      </div> <!--// dropdown -->
+      </div> <!--// block -->
+    </div> <!--// attachagent -->
+</div> <!--// saas -->
+
+
+<div id="hybrid" style="display: none;">
+
+    <div id="storages3">
+      <hr>
+      <div class="numberCircle">3</div>
+      <div class="h2-header">Local Storage or S3</div>
+      <div class="block">
+        <div class="block-text">The Storage Server can work with local disk or an AWS S3 bucket. Please choose from below the relevant installation instructions.</div>
+        <div class="block-button">
+          <select id="idlocals3" class="dropbtn" onchange="flocals3()">
+              <option value="local">Local Storage</option>
+              <option value="s3">AWS S3 Storage</option>
+          </select>
+        </div> <!-- block button -->
+        </div> <!-- // block-codex -->
+
+      </div> <!-- storage s3 -->
+
+  <div id="local">
+      <hr>
+      <div class="numberCircle">4</div>
+      <div class="h2-header">Installing the Storage Server on a Local Server</div>
+      <div class="block">
+        <div class="block-text">
+          <pre><code class="language-shell">
+From the following URL, download the Storage Server installation file:
+          wget https://app-takipi-com.s3.amazonaws.com/deploy/takipi-storage/takipi-storage-latest.tar.gz
+             
+Extract files to the /opt directory:
+          
+sudo tar zxvf takipi-storage-latest.tar.gz -C /opt
+             
+Configure and copy the takipi-storage file to the init.d directory:
+
+sudo chmod +x /opt/takipi-storage/etc/
+sudo cp /opt/takipi-storage/etc/takipi-storage.init /etc/init.d 
   
-}
+Verify that the /etc/init.d/takipi-storage
+file points to a valid Java installation.
+Depending on the Linux distribution, run installation:
+Ubuntu:
+sudo /usr/sbin/update-rc.d takipi-storage.init defaults
+Other Linux:
+sudo /sbin/chkconfig takipi-storage on
+Start the service:
+sudo service takipi-storage start
+Verify that the Storage Server is running:
+ps -ef | grep takipi-storage
+If service does not start check the logs and send to the OverOps team:
+less /opt/takipi-storage/log/takipi-storage.log.
+</code></pre>
+             
+             </div>
+   </div> <!-- // block-codex -->
+ </div> <!-- storage s3 -->
+
+
+         
+         
+         
+</div> <!--// hybrid -->
+         
+
+
+
+
+<div id="onprem">
+
+         
+         
+         
+</div>  <!--// onprem -->
+
   
-                                                 
-                                                    
-  
-function fdeployment() {
-var vdeptype = document.getElementById("idDeploymentType");
-var selected = vdeptype.options[vdeptype.selectedIndex].value;
-
-    if(selected === 'saas'){
-        $('#collector').show();
-    }
-    else{
-        $('#collector').hide();
-    }
-}
-
-  function fplatform() {
-var vplatform = document.getElementById("idPlatform");
-var selected = vplatform.options[vplatform.selectedIndex].value;
-
-    if(selected === 'windows'){
-        $('#windows').show();
-    }
-    else{
-        $('#windows').hide();
-    }
-}
-  
-  
-  
-function fcollector() {
-}
-
-
-  
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}  
-  
-  
-  
-window.onload = start;  
-</script>
-
-
-
-
-
+</div>  <!-- all -->
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
 </body>
 </html>
