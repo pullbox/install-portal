@@ -85,6 +85,19 @@ var selected = vdeptype.options[vdeptype.selectedIndex].value;
   
   
   function fcollector() {
+     var vcollector = document.getElementById("idCollector");
+    var selected = vcollector.options[vcollector.selectedIndex].value;
+
+    
+      $('#localCollector').hide();
+      $('#remoteCollector').hide();
+    
+    if(selected === 'remote'){
+        $('#remoteCollector').show();
+    }
+    if(selected === 'local'){
+        $('#localCollector').show();
+    }
   }
   
   
