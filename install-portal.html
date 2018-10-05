@@ -1,4 +1,4 @@
- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/overops.install-portal@1.0.11/dist/overops.install-portal.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/overops.install-portal@1.0.14/dist/overops.install-portal.min.css">
 
  <div>
 
@@ -14,8 +14,9 @@
           <option value="hybrid">Hybrid</option>
           <option value="onprem">On-Premises</option>
         </select>
-      </div>
-    </div>
+      </div>  <!-- block-button -->
+    </div> <!-- block -->
+  </div> <!-- deployment --> 
 
     <!--------------------------------------------------------->
     <div id="saas">
@@ -92,7 +93,7 @@
 
         <!--------------------------------------------------------->
         <div id="localCollector">
-          <!--------------------------------------------------------->
+       <!--------------------------------------------------------->
 
           <div id="idProxy">
             <hr>
@@ -121,7 +122,7 @@
                 <option value="wget">Wget</option>
                 <option value="curl">cURL</option>
                 <option value="deb">DEB</option>
-                <option value="rpm">PRM</option>
+                <option value="rpm">RPM</option>
               </select>
             </div> <!--// block-button -->
           </div> <!--/ block-codex -->
@@ -131,27 +132,104 @@
 
           <div id="lwget">
             <div class="block block-source">
-              <code>wget -O - -o /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=S35734#NRhyxOrTxWcptppB#Jbno9kAvS0iWKSOR4ZRb4NOD7zhMfBDKEZD0DecTJQc=#8be5
+              <code>wget -O - -o /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=&lt;Installation-Key&gt;
               </code>
             </div> <!--// block-source -->
           </div> <!--// lwget -->
+    <!--------------------------------------------------------->
 
 
           <div id="lcurl">
             <div class="block block-source">
-              <code>curl -x http://user:pass@192.168.1.101:8080/ -s /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=S35734#NRhyxOrTxWcptppB#Jbno9kAvS0iWKSOR4ZRb4NOD7zhMfBDKEZD0DecTJQc=#8be5 --https_proxy=http://user:pass@192.168.1.101:8080/
+              <code>curl -x http://user:pass@192.168.1.101:8080/ -s /dev/null http://get.takipi.com | sudo bash /dev/stdin -i ----sk=&lt;Installation-Key&gt; --https_proxy=http://user:pass@192.168.1.101:8080/
               </code>
             </div> <!--// block-source -->
           </div> <!--// lcurl -->
+    <!--------------------------------------------------------->
+          
+          
+           <div id="ldeb">
+                  
+           <hr>
+          <div class="numberCircle">7</div>
+          <div class="h2-header">Download the DEB package</div>
+          <div class="block">
+            <div class="block-button">
+              <a href="https://app.overops.com/app/download?t=deb">   
+                <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
+            </div> <!--// block-button -->
+          </div> <!--// block --> 
+                  
+                  
+ <hr>    
+           <div class="numberCircle">8</div>
+          <div class="h2-header">Install the package file</div>
+          <div class="block"> 
 
-          <!--------------------------------------------------------->
+             <pre> <code>sudo dpkg -i &lt;path-to-deb&gt;
+              </code> </pre>
+
+            </div> <!-- block -->
+            
+      <hr>           
+           <div class="numberCircle">9</div>
+          <div class="h2-header">Setup Takipi on your server</div>
+          <div class="block"> 
+       
+             <pre> <code>sudo /opt/takipi/etc/takipi-setup-package &lt;installation_key&gt;
+              </code> </pre>
+      
+            </div> <!-- block --> 
+            
+            
+          </div> <!--// ldeb -->
+    <!--------------------------------------------------------->
+
+      
+           <div id="lrpm">
+                  
+           <hr>
+          <div class="numberCircle">7</div>
+          <div class="h2-header">Download the RPM package</div>
+          <div class="block">
+            <div class="block-button">
+              <a href="https://app.overops.com/app/download?t=rpm">   
+                <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
+            </div> <!--// block-button -->
+          </div> <!--// block --> 
+                  
+                  
+ <hr>    
+           <div class="numberCircle">8</div>
+          <div class="h2-header">Install the package file</div>
+          <div class="block"> 
+
+             <pre>sudo rpm -i &lt;path-to-rpm-package&gt;
+             </pre>
+
+            </div> <!-- block -->
+            
+      <hr>           
+           <div class="numberCircle">9</div>
+          <div class="h2-header">Setup Takipi on your server</div>
+          <div class="block"> 
+       
+             <pre>sudo /opt/takipi/etc/takipi-setup-package &lt;installation_key&gt;
+             </pre>
+      
+            </div> <!-- block --> 
+            
+            
+          </div> <!--// lrpm -->          
+          
+        <!--------------------------------------------------------->
         </div> <!-- Local Collector -->
         <!--------------------------------------------------------->
 
 
-        <!--------------------------------------------------------->      
+        <!---------------------------------------------------------> 
         <div id="remoteCollector">
-          <!--------------------------------------------------------->
+        <!--------------------------------------------------------->
 
           <div id="rootless">
             <hr>
@@ -180,41 +258,42 @@
            <!--------------------------------------------------------->      
            <hr>
            <div class="numberCircle">6</div>
-           <div class="h2-header">To install a Collector without Root Access:</div>
+           <div class="h2-header">To install a Remote Collector without Root Access:</div>
            <div class="block">
             <div class="block-text">
               <pre>
                 <ol>
                   <li>From get.takipi.com/takipi-latest.tar.gz, download the Collector installation TAR file.</li>
                   <li>Extract files to your working folder:
-                    tar -xf takipi-latest.tar.gz
-                  A ‘takipi’ folder is created.</li>
+<code>tar -xf takipi-latest.tar.gz</code>
+A ‘takipi’ folder is created.</li>
                   <li>If you do not possess an Installation key, from the OverOps web application, generate an installation key.</li>
                   <li>Copy the installation key and paste it into a text file named installation.key.</li>
                   <li>Save the installation.key file in the <PATH>/takipi/work directory on your machine.</li>
                   <li>According to the template below, create the collector.properties file:
-                      <code>
-                        jvmPath=${JAVA_HOME}/jre/lib/amd64/server/libjvm.so
-                        baseUrl=https://backend.takipi.com/
-                        s3ConnectionTestUrl=https://s3.amazonaws.com/app-takipi-com/ConnectionTest
-                        # The TCP port to listen on
-                        listenOnPort=
-                        # Used by both Collector & Agent, Arbitrary token used to identify the Agent against the Service
-                        passphrase=
-                        # The server name of the Collector. Leave empty for HOSTNAME
-                        serverName=
-                        # The internal JVM max heap size
-                        javaHeapSize=1G
-                      ...</code>
+<code>jvmPath=${JAVA_HOME}/jre/lib/amd64/server/libjvm.so              
+baseUrl=https://backend.takipi.com/
+s3ConnectionTestUrl=https://s3.amazonaws.com/app-takipi-com/ConnectionTest
+# The TCP port to listen on
+listenOnPort=
+# Used by both Collector & Agent, Arbitrary token used to identify the Agent against the Service
+passphrase=
+# The server name of the Collector. Leave empty for HOSTNAME
+serverName=
+# The internal JVM max heap size
+javaHeapSize=1G
+...</code>
                   </li>
 
                   <li>Place the properties file in the takipi directory on your machine.</li>
                   <li>Run the Collector:
-                  <PATH_TO_TAKIPI>/takipi/bin/takipi-service</li>
-                  <li>Test the installation:From the OverOps web application (app.overops.com) Dashboard, click Add Server and then, from the dialog box, click Next and then click Test Installation.
-                      When the connection is established, the Collector status is 'Monitoring'.</li>
+<code>&lt;PATH_TO_TAKIPI&gt;/takipi/bin/takipi-service</code></li>
+                  <li>Test the installation:
+From the OverOps web application (app.overops.com) Dashboard, click Add Server and then, 
+from the dialog box, click Next and then click Test Installation.
+When the connection is established, the Collector status is 'Monitoring'.</li>
                   <li>Test that your application throws exceptions.
-                      Rootless installation does not enable the Collector to start automatically after a reboot.</li>
+Rootless installation does not enable the Collector to start automatically after a reboot.</li>
                   <li>Run the Collector as a daemon according to your system.</li>
                 </ol>        
                </pre>
@@ -231,21 +310,21 @@
            <!--------------------------------------------------------->       
            <hr>
            <div class="numberCircle">6</div>
-           <div class="h2-header">To install a Collector with Root Access:</div>
+           <div class="h2-header">To install a Remote Collector with Root Access:</div>
            <div class="block">
             <div class="block-text">
               <pre>
                 <ol>
                   <li>Select a TCP port to connect to the Collector host: <COLLECTOR_PORT>.</li>
-                  <li>Verify that the <COLLECTOR_PORT> is not blocked by any firewall.</li>
+                  <li>Verify that the &lt;COLLECTOR_PORT&gt; is not blocked by any firewall.</li>
                   <li>Run the installation script from a terminal:
-                    With Wget:
-                    wget -O - -o /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=<INSTALLATION_KEY> --listen_port=<COLLECTOR_PORT>
-                    With cURL:
-                    curl -sSL http://get.takipi.com | sudo bash /dev/stdin -i --sk=<INSTALLATION_KEY> --listen_port=<COLLECTOR_PORT></li>
-                    <li>Save the IP address of the <COLLECTOR_HOST>.</li>
+<b>With Wget:</b>
+<code>wget -O - -o /dev/null http://get.takipi.com | sudo bash /dev/stdin -i --sk=&lt;INSTALLATION_KEY&gt; --listen_port=&lt;COLLECTOR_PORT&gt;</code>
+<b>With cURL:</b>
+<code>curl -sSL http://get.takipi.com | sudo bash /dev/stdin -i --sk=&lt;INSTALLATION_KEY&gt; --listen_port=&lt;COLLECTOR_PORT&gt;</code></li>
+                    <li>Save the IP address of the &lt;COLLECTOR_HOST&gt;.</li>
                     <li>Verify that takipi-service is running:
-                    ps -ef | grep takipi</li>
+<code>ps -ef | grep takipi</code></li>
                   </ol>
                 </pre>
               </div> <!-- // block text -->
@@ -269,22 +348,69 @@
 
       <!--------------------------------------------------------->
       <div id="windows"> 
-        <!--------------------------------------------------------->
+      <!--------------------------------------------------------->
 
-        <hr>
-        <div class="numberCircle">6</div>
-        <div class="h2-header">Download the Windows Installer</div>
-        <div class="block">
-          <div class="block-text">Download the Installer file to your server.</div>
-          <div class="block-button">
-            <a href="https://app.overops.com/app/download?t=exe">   
-              <button class="dropbtn"><i class="fa fa-download"></i> Click here to Download</button></a>
-          </div> <!--// block-button -->
-        </div> <!--// block -->
+        
+     <div id="prerequisites">
+          <hr>
+          <div class="numberCircle">3</div>
+          <div class="h2-header">Prerequisites</div>
+          <div class="block">
+            <ol class="block-text">
+              <li><b>Software and Hardware requirements</b>
+                <p>Please review your HW and SW requirements <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
+              </li>
+              <li><b>Secret Key</b>
+                <p>You will require your Installation Key. For more details please see <a href="https://doc.overops.com/docs/generating-installation-keys">here</a>.</p>
+              </li>
+            </ol>
+          </div> <!-- block -->
+        </div> <!-- prerequisites -->
 
-          <!--------------------------------------------------------->       
+
+
+
+
+        <div id="collector">
+          <hr>
+          <div class="numberCircle">4</div>
+          <div class="h2-header">Select Collector implementation</div>
+          <div class="block">
+          <div style="overflow: auto;">
+            <div style="width: 50%; float:left;">
+             <div class="windowsrmtCdropdown">
+              <button onclick="fwinrmtC()" class="winrmtCbtn">Select Implementation type</button>
+              <div id="winrmtCDropdown" class="winrmtC-content">
+                <a href="https://doc.overops.com/docs/windows-remote-collector-install">Windows Remote Collector installation</a>
+                <a href="https://doc.overops.com/docs/windows-micro-agent-installation">Windows Agent only installation</a>
+                <a href="https://doc.overops.com/docs/windows-local-agent-and-collector-install">Windows Local Collector and Agent installation</a>
+              </div> <!--// mydropdown -->
+            </div> <!--// dropdown -->
+            </div> <!--// left -->
+
+         
+            
+            <div style="width: 50%; float:right;">
+              <b>Need help deciding what Collector</b>
+              <p>The simplest way to install is via a “local” Collector. Both Agent and Collector is running on the same machine. “Remote” Collector is our recommended approach for production environments but require a separate server to run on.</p>
+              <a href="documentation">See our documentation</a>
+            </div> <!--// right --> 
+          </div> <!--// overflow --> 
+          </div> <!-- bock -->
+        </div> <!--// collector --> 
+       
+              
+       
+        
+       
+        
+        
+        
+        
+        
+      <!--------------------------------------------------------->   
       </div> <!--// windows -->
-        <!--------------------------------------------------------->
+      <!--------------------------------------------------------->
 
 
         <!--------------------------------------------------------->
@@ -306,122 +432,185 @@
           <!--------------------------------------------------------->
 
 
-
-
-
-
-
-
-        <div id="attachagent">
+            
+  <!--------------------------------------------------------->
+  <div id="docker">
+  <!--------------------------------------------------------->   
           <hr>
+          <div class="numberCircle">6</div>
+          <div class="h2-header">Add following snippet to your Dockerfile in order to install OverOps container:</div>
+          <div class="block">
+            <div class="block-text">
+              <b>using wget:</b>
+              <pre>RUN wget -O - -o /dev/null http://get.takipi.com/takipi-t4c-installer | bash /dev/stdin -i --sk=&lt;installation key&gt;
+              </pre>
+               <b>using curl:</b>
+              <pre>RUN curl -Ls /dev/null http://get.takipi.com/takipi-t4c-installer | bash /dev/stdin -i --sk=&lt;installation key&gt;
+              </pre>
+              </div> <!-- // block text -->
+            </div> <!-- // block -->
+
+              
+          <hr>   
           <div class="numberCircle">7</div>
-          <div class="h2-header">Attach Micro-Agent to your JVM</div>
+          <div class="h2-header">Add the Takipi agent library -agentlib:TakipiAgent to your JVM arguments:</div>
+          <div class="block">
+            <div class="block-text">
+              <pre>CMD java -agentlib:TakipiAgent -jar yourjar.jar
+              </pre>
+            </div> <!-- // block text -->
+          </div> <!-- // block -->   
+              
+              
+              
+          <div id="dockerinstallguide">
+          <hr>
+          <div class="numberCircle">8</div>
+          <div class="h2-header">Installation Guides for:</div>
 
           <div class="block">
-            <div class="dropdown">
-              <button onclick="flauncher()" class="dropbtna">Select your launcher</button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="https://doc.overops.com/docs/tomcat">Tomcat</a>
-                <a href="https://doc.overops.com/docs/glassfish">Glassfish</a>
-                <a href="https://doc.overops.com/docs/jbosswildfly">JBoss/Wildfly</a>
-                <a href="https://doc.overops.com/docs/play-framework">Play Framework</a>
-                <a href="https://doc.overops.com/docs/eclipse">Eclipse</a>
-                <a href="https://doc.overops.com/docs/netbeans">NetBeans</a>
-                <a href="https://doc.overops.com/docs/intellij">IntelliJ</a>
-                <a href="https://doc.overops.com/docs/scala">Scala</a>
-                <a href="https://doc.overops.com/docs/standalone-jvm">Standalone</a>
-                <a href="https://doc.overops.com/docs/mule">Mule</a>
-                <a href="https://doc.overops.com/docs/websphere">WebSphere</a>
-                <a href="https://doc.overops.com/docs/weblogic">WebLogic</a>  
-                <a href="https://doc.overops.com/docs/cloudfoundry">CloudFoundry</a>
-                <a href="https://doc.overops.com/docs/jetty">Jetty</a>
+            <div class="block-text">To include OverOps in your Docker applications, add the <code>takipi-t4c-installer</code> snippet according to the relevant Dockerfile for your platform from below.</div> 
+            <div class="dockerdropdown">
+              <button onclick="fdockerinstall()" class="dockerbtn">Select your platform</button>
+              <div id="dockerDropdown" class="docker-content">
+                <a href="https://doc.overops.com/docs/docker-with-debianubuntu-using-apt-get">Docker with Debian/Ubuntu and apt-get</a>
+                <a href="https://doc.overops.com/docs/docker-with-centosredhat-using-yum">Docker with CentOs/RedHat using yum</a>
+                <a href="https://doc.overops.com/docs/docker-with-alpine-linux">Docker with Alpin Linux</a>
               </div> <!--// mydropdown -->
             </div> <!--// dropdown -->
           </div> <!--// block -->
-        </div> <!--// attachagent -->
+        </div> <!--// dockerinstallguide -->
+
+        
+              
+              
+              
+     <!--------------------------------------------------------->    
+     </div> <!--// docker -->
+     <!--------------------------------------------------------->
 
 
 
 
-            <!--------------------------------------------------------->
+
+
+
+
+
+    <!--------------------------------------------------------->
     </div> <!--// saas -->
-          <!--------------------------------------------------------->
+    <!--------------------------------------------------------->
 
 
-          <!--------------------------------------------------------->
-          <div id="hybrid">
-            <!--------------------------------------------------------->
+    <!--------------------------------------------------------->
+    <div id="hybrid">
+      <!--------------------------------------------------------->
 
-            <div id="storages3">
-              <hr>
-              <div class="numberCircle">3</div>
-              <div class="h2-header">Local Storage or S3</div>
-              <div class="block">
-                <div class="block-text">The Storage Server can work with local disk or an AWS S3 bucket. Please choose from below the relevant installation instructions.</div>
-                <div class="block-button">
-                  <select id="idlocals3" class="dropbtn" onchange="flocals3()">
-                    <option value="local">Local Storage</option>
-                    <option value="s3">AWS S3 Storage</option>
-                  </select>
-                </div> <!-- block button -->
-              </div> <!-- // block-codex -->
-            </div> <!-- storage s3 -->
+      <div id="storages3">
+        <hr>
+        <div class="numberCircle">3</div>
+        <div class="h2-header">Local Storage or S3</div>
+        <div class="block">
+          <div class="block-text">The Storage Server can work with local disk or an AWS S3 bucket. Please choose from below the relevant installation instructions.</div>
+          <div class="block-button">
+            <select id="idlocals3" class="dropbtn" onchange="flocals3()">
+              <option value="local">Local Storage</option>
+              <option value="s3">AWS S3 Storage</option>
+            </select>
+          </div> <!-- block button -->
+        </div> <!-- // block-codex -->
+      </div> <!-- storage s3 -->
 
-            <div id="local">
-              <hr>
-              <div class="numberCircle">4</div>
-              <div class="h2-header">Installing the Storage Server on a Local Server</div>
-              <div class="block">
-                <div class="block-text">
-                  <pre><code class="language-shell">
-                    From the following URL, download the Storage Server installation file:
-                    wget https://app-takipi-com.s3.amazonaws.com/deploy/takipi-storage/takipi-storage-latest.tar.gz
-
-                    Extract files to the /opt directory:
-
-                    sudo tar zxvf takipi-storage-latest.tar.gz -C /opt
-
-                    Configure and copy the takipi-storage file to the init.d directory:
-
-                    sudo chmod +x /opt/takipi-storage/etc/
-                    sudo cp /opt/takipi-storage/etc/takipi-storage.init /etc/init.d 
-
-                    Verify that the /etc/init.d/takipi-storage
-                    file points to a valid Java installation.
-                    Depending on the Linux distribution, run installation:
-                    Ubuntu:
-                    sudo /usr/sbin/update-rc.d takipi-storage.init defaults
-                    Other Linux:
-                    sudo /sbin/chkconfig takipi-storage on
-                    Start the service:
-                    sudo service takipi-storage start
-                    Verify that the Storage Server is running:
-                    ps -ef | grep takipi-storage
-                    If service does not start check the logs and send to the OverOps team:
-                    less /opt/takipi-storage/log/takipi-storage.log.
-                  </code></pre>
-
-                </div>
-              </div> <!-- // block-codex -->
-            </div> <!-- local -->
+      <div id="local">
+        <hr>
+        <div class="numberCircle">4</div>
+        <div class="h2-header">Installing the Storage Server on a Local Server</div>
+        <div class="block">
+          <div class="block-text">
+            <pre>
+           <ol>
+              <li>From the following URL, download the Storage Server installation file:
+<code>wget https://app-takipi-com.s3.amazonaws.com/deploy/takipi-storage/takipi-storage-latest.tar.gz</code>
+             </li>
+              <li>Extract files to the /opt directory:
+<code>sudo tar zxvf takipi-storage-latest.tar.gz -C /opt</code></li>
+              <li>Configure and copy the takipi-storage file to the init.d directory:
+<pre><code>sudo chmod +x /opt/takipi-storage/etc/
+sudo cp /opt/takipi-storage/etc/takipi-storage.init /etc/init.d</code></pre> 
+             <li>Verify that the <code>/etc/init.d/takipi-storage</code>file points to a valid Java installation.</li>
+              <li>Depending on the Linux distribution, run installation:
+<b>Ubuntu:</b>
+<code>sudo /usr/sbin/update-rc.d takipi-storage.init defaults</code>
+<b>Other Linux:</b>
+<code>sudo /sbin/chkconfig takipi-storage on</code></li>
+              <li>Start the service:
+<code>sudo service takipi-storage start</code>
+             </li>
+              <li>Verify that the Storage Server is running:
+<code>ps -ef | grep takipi-storage</code>
+             </li>
+            </ol>
+          </pre>
+          </div>
+        </div> <!-- // block-codex -->
+      </div> <!-- local -->
 
 
 
 
-            <!--------------------------------------------------------->         
-          </div> <!--// hybrid -->
-          <!--------------------------------------------------------->         
+    <!---------------------------------------------------------> 
+    </div> <!--// hybrid -->
+    <!--------------------------------------------------------->         
 
 
 
-          <!--------------------------------------------------------->
-          <div id="onprem">
-           <!--------------------------------------------------------->   
-           <p> this is onprem </p>
-           <!--------------------------------------------------------->         
-         </div>  <!--// onprem -->
-         <!--------------------------------------------------------->
+    <!--------------------------------------------------------->
+    <div id="onprem">
+     <!--------------------------------------------------------->   
+     <p> this is onprem </p>
+   <!--------------------------------------------------------->        
+    </div>  <!--// onprem -->
+   <!--------------------------------------------------------->
 
-       </div>  <!-- all -->
+   
+   
+   
+   
+   
+      
+    <div id="attachagent"  
+      <hr>
+      <div class="numberCircle">99</div>
+      <div class="h2-header">Attach Micro-Agent to your JVM</div>
 
-     </div>
+      <div class="block">
+        <div class="dropdown">
+        <button onclick="flauncher()" class="agentbtn">Select your launcher</button>
+  <div id="agentsDropdown" class="agent-content">
+    <a href="https://doc.overops.com/docs/tomcat">Tomcat</a>
+    <a href="https://doc.overops.com/docs/glassfish">Glassfish</a>
+    <a href="https://doc.overops.com/docs/jbosswildfly">JBoss/Wildfly</a>
+    <a href="https://doc.overops.com/docs/play-framework">Play Framework</a>
+    <a href="https://doc.overops.com/docs/eclipse">Eclipse</a>
+    <a href="https://doc.overops.com/docs/netbeans">NetBeans</a>
+    <a href="https://doc.overops.com/docs/intellij">IntelliJ</a>
+    <a href="https://doc.overops.com/docs/scala">Scala</a>
+    <a href="https://doc.overops.com/docs/standalone-jvm">Standalone</a>
+    <a href="https://doc.overops.com/docs/mule">Mule</a>
+    <a href="https://doc.overops.com/docs/websphere">WebSphere</a>
+    <a href="https://doc.overops.com/docs/weblogic">WebLogic</a>  
+    <a href="https://doc.overops.com/docs/cloudfoundry">CloudFoundry</a>
+    <a href="https://doc.overops.com/docs/jetty">Jetty</a>
+  </div> <!--// mydropdown -->
+      </div> <!--// dropdown -->
+      </div> <!--// block -->
+    </div> <!--// attachagent -->  
+   
+   
+   
+   
+   
+ </div>  <!-- all -->
+
+
+
